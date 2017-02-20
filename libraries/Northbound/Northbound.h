@@ -1,3 +1,5 @@
+#ifndef __Norththbound_h__
+#define __Northbound_h__
 #define TOTAL_DEGREES 360
 #define MOTORS 8
 
@@ -9,3 +11,5 @@ typedef struct Motor_Couple {
 } Motor_Couple;
 
 Motor_Couple degrees_to_motors(int degrees);
+
+#endif

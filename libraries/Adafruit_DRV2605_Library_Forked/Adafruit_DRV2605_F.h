@@ -23,6 +23,8 @@
 
 #include <Wire.h>
 
+#define DRV2605_ADDR 0x5A
+
 #define DRV2605_REG_STATUS 0x00
 #define DRV2605_REG_MODE 0x01
 #define DRV2605_MODE_INTTRIG  0x00
@@ -67,19 +69,20 @@
 #define DRV2605_REG_LRARESON 0x22
 
 
-class Adafruit_DRV2605 {
+class Adafruit_DRV2605_F2 {
  public:
 
-  Adafruit_DRV2605(uint8_t addr);
+  Adafruit_DRV2605_F2(uint8_t address, uint8_t port_num);
   boolean begin(void);  
 
-  uint8_t address;
+  uint8_t addr;
+  uint8_t port;
+  void tcaselect(void);
   void writeRegister8(uint8_t reg, uint8_t val);
   uint8_t readRegister8(uint8_t reg);
   void setWaveform(uint8_t slot, uint8_t w);
   void selectLibrary(uint8_t lib);
   void go(void);
-  void stop(void);
   void setMode(uint8_t mode);
   void setRealtimeValue(uint8_t rtp);
   // Select ERM (Eccentric Rotating Mass) or LRA (Linear Resonant Actuator) vibration motor
